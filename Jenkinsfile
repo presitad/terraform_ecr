@@ -13,5 +13,11 @@ pipeline {
                 echo 'This is a sample stage'
             }
         }
+	stage('Build') {
+            steps {
+                git clone https://github.com/presitad/terraform_ecr
+		docker build -t terraform-ansible -f terraform_ecr/Dockerfile .
+            }
+        }
     }
 }
